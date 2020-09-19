@@ -62,15 +62,14 @@ nav ul li a::before{
     position: absolute;
     content: "";
     height: 4px;
-    width: 100%;
-    left: 0;
+    width: 30%;
     top: 100%;
     transform-origin: bottom;
     transform:scaleX(0);
     transition: 0.3s;
     background: #fff;
-    justify-content: center;
     border-radius: 2px;
+    justify-self: center;
 }
 
 nav ul li a:hover::before{
@@ -82,7 +81,7 @@ nav ul li a:hover::before{
     top: -10px;
 }
 
-.center{
+#center{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,30 +90,41 @@ nav ul li a:hover::before{
     padding: 10em 0;
 }
 
-.center h1{
-    margin: auto;
-    margin-top: 300px;
-    font-size: 5em;
+#center .btn {
     color: white;
-    font-family: 'Poppins', sans-serif;
-    z-index: 1;
-    justify-content: left;
-    height: 100vh;
+    text-decoration: none;
+    display: flex;
+    margin: 0 auto;
+    border-radius: 3em;
+}
+.btn span{
+    padding: 1.7em;
+    font-weight: bold;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+.btn-svg {
+    position: relative;
+    justify-content: center;
+    overflow: hidden;
+}
+.btn-label{
+    position: absolute;
+}
+.btn-svg:hover .btn-label {
+    color: rgb(71, 71, 71);
+}
+.btn .btn-circle{
+      position: absolute;
+      z-index: -1;
+      transform: scale(0);
+      transition: 0.5s;
+      top: -4.5em;
+}
+.btn-svg:hover .btn-circle {
+    transform: scale(1); 
 }
 
-.center a{
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight: 900;
-    margin: auto;
-    padding: 15px 50px;
-    color: rgb(0, 0, 0);
-    background: rgb(255, 255, 255);
-    border-radius: 40px;
-    font-family: 'Poppins', sans-serif;
-    justify-items: left;
-    box-shadow: 5px 5px 10px #000000;
-}
 
 .css_iad839 {
     padding: 0 1em 1em 1em;
@@ -125,6 +135,69 @@ nav ul li a:hover::before{
     line-height: 1.2;
 }
 
+.scroll{
+    justify-content: center;
+    position: relative;
+    display: flex;
+    width: 90%;
+    margin:30px auto;
+    animation: anim 2s ease-in-out;
+}
+.mouse {
+    margin: 0 auto;
+    top: 100vh;
+    border: solid 5px rgb(255, 255, 255);
+    padding: 25px 15px;
+
+    border-radius: 25px;
+}
+.dot{
+    display: block;
+    position: absolute;
+    left: 50%;
+    background: #fff;
+    height: 0.5em;
+    width: 0.5em;
+    top: 0.6em;
+    margin-left: -0.25em;
+    border-radius: 50%;
+    transform-origin: top center;
+    backface-visibility: hidden;
+    animation: scroll_2 2s ease-out infinite;
+    -webkit-animation: scrdwn 0.8s steps(8) infinite;
+    animation:scrdwn 0.8s steps(8) infinite;
+}
+@keyframes scrdwn{
+    0%{transform: translateY(0); opacity: 1;}
+    25%{opacity: 1;}
+    50%{opacity: 1;}
+    75%{transform: translateY(0.5em);}
+    100%{opacity: 0;}
+}
+
+/* @-webkit-keyframes arrdown{
+    0% {position: relative;top: 50%;transform: translateY(0%);}
+    10% {position: relative;top: 100%;transform: translateY(50%);}
+    100% {position: relative;top: 100%;transform: translateY(50%);}
+} */
+
+@keyframes arrdown{
+    0% {
+        position: relative;
+        top: 50%;
+        transform: translateX(0%);
+    }
+    10% {
+        position: relative;
+        top: 75%;
+        transform: translateY(75%);
+    }
+    100% {
+        position: relative;
+        top: 100%;
+        transform: translateY(100%);
+    }
+}
 
 /* hamburger menu */
 
@@ -201,6 +274,7 @@ nav ul li a:hover::before{
         width: 100%;
         transform: translateY(-100%);
         transition: all 0.9s;
+        z-index: 1;
     }
 
     nav ul.slide{
@@ -209,9 +283,12 @@ nav ul li a:hover::before{
 
     .menu-toggle{
         display: flex;
+        z-index: 1;
     }
 
     nav ul li a:hover{
         color: rgb(255, 138, 138);
     }
+
+    
 }
